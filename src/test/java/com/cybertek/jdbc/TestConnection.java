@@ -16,6 +16,7 @@ public class TestConnection {
         String password = "hr";
 
         // GETTING DATABASE CONNECTION TO THE SERVER
+        //
         try {
             Connection conn = DriverManager.getConnection(connectionStr,username,password);
             System.out.println("CONNECTION Successful!!");
