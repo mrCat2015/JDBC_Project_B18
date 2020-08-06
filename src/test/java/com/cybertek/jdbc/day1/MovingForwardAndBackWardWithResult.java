@@ -6,7 +6,7 @@ public class MovingForwardAndBackWardWithResult {
 
     public static void main(String[] args) throws SQLException {
 
-        String connectionStr = "jdbc:oracle:thin:@52.71.242.164:1521:XE";
+        String connectionStr = "jdbc:oracle:thin:@54.236.43.105:1521:XE";
         String username = "hr" ;
         String password = "hr" ;
         Connection conn = DriverManager.getConnection(connectionStr,username,password) ;
@@ -20,14 +20,44 @@ public class MovingForwardAndBackWardWithResult {
         //ResultSet rs   =   stmnt.executeQuery("SELECT * FROM COUNTRIES WHERE REGION_ID = 1") ;
         ResultSet rs   =   stmnt.executeQuery("SELECT * FROM COUNTRIES") ;
 
-        rs.next() ;
-        System.out.println(rs.getString("COUNTRY_ID") + " " + rs.getString("COUNTRY_NAME"));
+        rs.next();
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
 
-        rs.next() ;
-        System.out.println(rs.getString("COUNTRY_ID") + " " + rs.getString("COUNTRY_NAME"));
-        // HOW DO I GO BACK TO PREVIOUS ROW
+        rs.next();
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
+
         rs.previous();
-        System.out.println(rs.getString("COUNTRY_ID") + " " + rs.getString("COUNTRY_NAME"));
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
+
+        //MOVING THE CURSOR FREELY between rows
+
+        rs.last();
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
+
+        rs.previous();
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
+
+        rs.first();
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
+
+        rs.absolute(5);
+        System.out.println(rs.getString("COUNTRY_ID" )+ " "+ rs.getString("COUNTRY_NAME"));
+
+        rs.beforeFirst();
+        rs.afterLast();
+
+        rs.close();
+        stmnt.close();
+        conn.close();
+
+
+
+
+
+
+
+
+
 
 
 
